@@ -10,28 +10,28 @@ const fetchBreedDescription = function(breedName, callback) {
     if (error) {
       return error.message;
       //console.error('Error fetching data:', error.message);
-      
+
       //process.exit();
     }
-  
+
     const data = JSON.parse(body);
-  
+
     if (data.length === 0) {
       const emptyDesc = 'Breed not found.';
       callback(emptyDesc, null);
     }
-  
+
     if (response.statusCode !== 200) {
       const statResp = data.message;
       callback(statResp, null);
     }
-  
+
     for (let arrElem of data) {
       const objOfElem = arrElem;
       const desc = objOfElem.description;
       callback(null ,desc);
     }
-  
+
   });
 
 
